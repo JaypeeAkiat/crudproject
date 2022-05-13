@@ -40,5 +40,6 @@ class LoginController extends Controller
 
     // Function to send login link via email
     // use SMTP (mailtrap)
+    //
 
 }

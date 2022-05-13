@@ -37,4 +37,8 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // Function to send login link via email
+    // use SMTP (mailtrap)
+
 }

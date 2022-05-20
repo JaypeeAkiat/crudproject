@@ -15,13 +15,12 @@ class PagesController extends Controller
         return view('auth/login');
     }
 
-    
-   
-
-    public function home(){
+    public function welcome(){
         return view('home');
     }
 
-
+    public function landing(){
+        return view ('layouts.app');
+    }
 
 }

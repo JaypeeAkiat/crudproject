@@ -245,7 +245,7 @@ return [
         ],
 
         [
-            'text' => 'User Managements',
+            'text' => 'Users Management',
             'url'  => 'user',
             'icon' => 'fas fa-fw fa-user',
         ],

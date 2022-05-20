@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/user',  [UserController::class, 'index']);
+Route::resource('/user', UserController::class);
 
-Route::get('/',  [PagesController::class, 'login']);
+Route::post('/', [LoginController::class, 'sendLoginLink'])->name('userLogin');
 
-Route::get('/home', [PagesController::class, 'welcome'])->name('home');    
 
-Route::get('/main', [PagesController::class, 'index'])->name('main');    
+Route::get('/',  [PagesController::class, 'landing']);
+
+
+Route::get('/welcome', [PagesController::class, 'welcome'])->name('welcome');    
+
+Route::get('/home', [PagesController::class, 'index'])->name('home');    
+
+
 
 Auth::routes();

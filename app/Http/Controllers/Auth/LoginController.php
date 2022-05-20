@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
+use Grosv\LaravelPasswordlessLogin\LoginUrl;
+use App\Mail\UserLoginMail;
+use Illuminate\Support\Facades\Mail;
 class LoginController extends Controller
 {
     /*
@@ -26,7 +30,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/welcome';
+    protected $redirectTo = RouteServiceProvider::HOME;
+
     /**
      * Create a new controller instance.
      *
@@ -37,8 +42,20 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // Function to send login link via email
-    // use SMTP (mailtrap)
-    //
+    function sendLoginLink(Request $request)
+    {
+        $email = $request->get('email');
+        $user = User::where('email', '=', $email)->first();
 
+        if(empty($user)){
+            return back();
+        }
+        $generator = new LoginUrl($user);
+        $data['url'] = $generator->generate();
+        $data['user'] = $user;
+
+        Mail::to($user->email)->send(new UserLoginMail($data));
+        
+        return back();
+    }
 }

@@ -11,9 +11,9 @@
 		<div class="col-md-9">
 			<div class="card">
 				<div class="card-body">
-					{{-- <a href="{{ url('/user/create') }}" class="btn btn-success btn-sm" title="Add New User">
+					<a href="{{ url('/user/create') }}" class="btn btn-success btn-sm" title="Add New User">
 						<i class="fa fa-plus" aria-hidden="true"></i> Add New
-					</a> --}}
+					</a> 
 					<div class="table-responsive">
 						<table class="table">
 							<thead>

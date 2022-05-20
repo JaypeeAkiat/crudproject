@@ -14,20 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',  [PagesController::class, 'index']);
+Route::get('/user',  [UserController::class, 'index']);
+
+Route::get('/',  [PagesController::class, 'login']);
+
+Route::get('/home', [PagesController::class, 'welcome'])->name('home');    
+
+Route::get('/main', [PagesController::class, 'index'])->name('main');    
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

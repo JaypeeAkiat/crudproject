@@ -15,6 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <a class="btn btn-link" href="{{ route('home') }}">
+                        {{ __('Home') }}
+                    </a>
                 </div>
             </div>
         </div>
